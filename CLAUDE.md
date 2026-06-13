@@ -8,7 +8,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 bun install        # install dependencies
 bun run dev        # dev server at localhost:3000
 bun run build      # production build → dist/
-bun run typecheck  # type check (tsc --noEmit)
+bun run typecheck     # type check (tsc --noEmit)
+bun run format        # format all files with prettier
+bun run format:check  # check formatting without writing
 ```
 
 ## Architecture

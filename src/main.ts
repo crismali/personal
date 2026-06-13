@@ -1,1 +1,1 @@
-console.log("Site loaded");
+console.log('Site loaded')
