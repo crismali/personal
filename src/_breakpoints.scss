@@ -20,6 +20,8 @@
 //     }
 //   }
 
+@use 'sass:map';
+
 $breakpoints: (
   'phone': 480px,
   'tablet': 768px,
@@ -29,21 +31,21 @@ $breakpoints: (
 
 // Mobile-first: min-width up from breakpoint
 @mixin from($name) {
-  @media (min-width: map-get($breakpoints, $name)) {
+  @media (min-width: map.get($breakpoints, $name)) {
     @content;
   }
 }
 
 // Max-width: up to but not including breakpoint
 @mixin until($name) {
-  @media (max-width: calc(map-get($breakpoints, $name) - 1px)) {
+  @media (max-width: calc(map.get($breakpoints, $name) - 1px)) {
     @content;
   }
 }
 
 // Exactly between two breakpoints
 @mixin between($from, $until) {
-  @media (min-width: map-get($breakpoints, $from)) and (max-width: calc(map-get($breakpoints, $until) - 1px)) {
+  @media (min-width: map.get($breakpoints, $from)) and (max-width: calc(map.get($breakpoints, $until) - 1px)) {
     @content;
   }
 }
