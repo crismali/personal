@@ -1,0 +1,49 @@
+// Usage:
+//
+//   @use 'breakpoints' as *;
+//
+//   .container {
+//     padding: 1rem;
+//
+//     @include from('tablet') {
+//       padding: 2rem;
+//     }
+//
+//     @include from('desktop') {
+//       max-width: 1200px;
+//       margin: 0 auto;
+//     }
+//
+//     // tablet only
+//     @include between('tablet', 'laptop') {
+//       background: red;
+//     }
+//   }
+
+$breakpoints: (
+  'phone': 480px,
+  'tablet': 768px,
+  'laptop': 1024px,
+  'desktop': 1280px,
+);
+
+// Mobile-first: min-width up from breakpoint
+@mixin from($name) {
+  @media (min-width: map-get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+// Max-width: up to but not including breakpoint
+@mixin until($name) {
+  @media (max-width: map-get($breakpoints, $name) - 1px) {
+    @content;
+  }
+}
+
+// Exactly between two breakpoints
+@mixin between($from, $until) {
+  @media (min-width: map-get($breakpoints, $from)) and (max-width: map-get($breakpoints, $until) - 1px) {
+    @content;
+  }
+}
