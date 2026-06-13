@@ -11,6 +11,7 @@ bun run build      # production build → dist/
 bun run typecheck     # type check (tsc --noEmit)
 bun run format        # format all files with prettier
 bun run format:check  # check formatting without writing
+bun run ci            # typecheck + format:check + build
 ```
 
 ## Architecture

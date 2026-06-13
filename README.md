@@ -20,6 +20,14 @@ bun run dev
 
 Starts a dev server at `http://localhost:3000`. TypeScript and SCSS files are rebuilt automatically on change.
 
+## CI Check
+
+```bash
+bun run ci
+```
+
+Runs type checking, format check, and production build in sequence.
+
 ## Formatting
 
 ```bash
