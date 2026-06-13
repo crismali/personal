@@ -13,6 +13,7 @@ const result = await Bun.build({
   entrypoints: [`${SRC}/main.ts`],
   outdir: OUT,
   naming: 'main.js',
+  target: 'browser',
   minify: true,
 })
 

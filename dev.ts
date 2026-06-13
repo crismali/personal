@@ -10,6 +10,7 @@ async function buildJS() {
     entrypoints: [`${SRC}/main.ts`],
     outdir: `${SRC}/_dist`,
     naming: 'main.js',
+    target: 'browser',
   })
   if (!result.success) {
     for (const msg of result.logs) console.error(msg)
