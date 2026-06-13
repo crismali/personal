@@ -25,7 +25,7 @@ async function buildCSS() {
 await buildJS()
 await buildCSS()
 
-const server = Bun.serve({
+Bun.serve({
   port: PORT,
   async fetch(req: Request) {
     const url = new URL(req.url)
