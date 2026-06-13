@@ -1,5 +1,6 @@
 import { cpSync, rmSync, mkdirSync } from 'fs'
 import path from 'path'
+import * as sass from 'sass'
 
 const SRC = path.resolve(import.meta.dir, 'src')
 const OUT = path.resolve(import.meta.dir, 'dist')
@@ -20,10 +21,15 @@ if (!result.success) {
   process.exit(1)
 }
 
-// Copy static assets
+// Compile SCSS
+const css = sass.compile(`${SRC}/styles.scss`, { style: 'compressed' })
+await Bun.write(`${OUT}/styles.css`, css.css)
+
+// Copy static assets (exclude TS and SCSS source)
 cpSync(SRC, OUT, {
   recursive: true,
-  filter: (src: string) => !src.endsWith('.ts') && !src.includes('/_dist'),
+  filter: (src: string) =>
+    !src.endsWith('.ts') && !src.endsWith('.scss') && !src.includes('/_dist'),
 })
 
 // Rewrite script src in HTML

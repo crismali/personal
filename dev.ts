@@ -1,5 +1,6 @@
 import { watch } from 'fs'
 import path from 'path'
+import * as sass from 'sass'
 
 const SRC = path.resolve(import.meta.dir, 'src')
 const PORT = 3000
@@ -15,7 +16,13 @@ async function buildJS() {
   }
 }
 
+async function buildCSS() {
+  const result = sass.compile(`${SRC}/styles.scss`)
+  await Bun.write(`${SRC}/_dist/styles.css`, result.css)
+}
+
 await buildJS()
+await buildCSS()
 
 const server = Bun.serve({
   port: PORT,
@@ -23,8 +30,8 @@ const server = Bun.serve({
     const url = new URL(req.url)
     let pathname = url.pathname === '/' ? '/index.html' : url.pathname
 
-    // Rewrite TS script references to compiled JS
     if (pathname === '/main.ts') pathname = '/_dist/main.js'
+    if (pathname === '/styles.css') pathname = '/_dist/styles.css'
 
     const file = Bun.file(`${SRC}${pathname}`)
     if (await file.exists()) {
@@ -37,8 +44,13 @@ const server = Bun.serve({
 console.log(`Dev server: http://localhost:${PORT}`)
 
 watch(SRC, { recursive: true }, async (_: string, filename: string | null) => {
-  if (filename?.endsWith('.ts') && !filename.startsWith('_dist')) {
+  if (!filename || filename.startsWith('_dist')) return
+  if (filename.endsWith('.ts')) {
     await buildJS()
     console.log('Rebuilt JS')
+  }
+  if (filename.endsWith('.scss')) {
+    await buildCSS()
+    console.log('Rebuilt CSS')
   }
 })

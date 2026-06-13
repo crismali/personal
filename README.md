@@ -1,6 +1,6 @@
 # Personal Site
 
-Static website built with Bun.
+Static website built with Bun. Styles are written in SCSS and compiled via [sass](https://sass-lang.com).
 
 ## Requirements
 
@@ -18,7 +18,7 @@ bun install
 bun run dev
 ```
 
-Starts a dev server at `http://localhost:3000`. TypeScript files are rebuilt automatically on change.
+Starts a dev server at `http://localhost:3000`. TypeScript and SCSS files are rebuilt automatically on change.
 
 ## Formatting
 
@@ -46,7 +46,7 @@ Outputs minified HTML, CSS, and JS to `dist/`. Deploy the contents of `dist/` to
 ```
 src/
   index.html   # HTML entry point
-  styles.css   # Global styles
+  styles.scss  # Global styles (SCSS)
   main.ts      # TypeScript entry point
 dist/          # Production output (git-ignored)
 dev.ts         # Dev server
