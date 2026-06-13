@@ -19,7 +19,7 @@ await buildJS();
 
 const server = Bun.serve({
   port: PORT,
-  async fetch(req) {
+  async fetch(req: Request) {
     const url = new URL(req.url);
     let pathname = url.pathname === "/" ? "/index.html" : url.pathname;
 
@@ -36,7 +36,7 @@ const server = Bun.serve({
 
 console.log(`Dev server: http://localhost:${PORT}`);
 
-watch(SRC, { recursive: true }, async (_, filename) => {
+watch(SRC, { recursive: true }, async (_: string, filename: string | null) => {
   if (filename?.endsWith(".ts") && !filename.startsWith("_dist")) {
     await buildJS();
     console.log("Rebuilt JS");

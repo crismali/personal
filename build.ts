@@ -23,7 +23,7 @@ if (!result.success) {
 // Copy static assets
 cpSync(SRC, OUT, {
   recursive: true,
-  filter: (src) => !src.endsWith(".ts") && !src.includes("/_dist"),
+  filter: (src: string) => !src.endsWith(".ts") && !src.includes("/_dist"),
 });
 
 // Rewrite script src in HTML

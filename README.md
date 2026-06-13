@@ -20,6 +20,12 @@ bun run dev
 
 Starts a dev server at `http://localhost:3000`. TypeScript files are rebuilt automatically on change.
 
+## Type Checking
+
+```bash
+bun run typecheck
+```
+
 ## Production Build
 
 ```bash
