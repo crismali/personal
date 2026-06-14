@@ -1,4 +1,5 @@
 import { initTheme } from './theme'
+import { initActiveNav } from './nav'
 
 console.log('Site loaded')
 
@@ -18,3 +19,4 @@ function setContactLink() {
 setCurrentYear()
 setContactLink()
 initTheme()
+initActiveNav()

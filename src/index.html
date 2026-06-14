@@ -3,8 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Site</title>
+    <title>Michael Crismali</title>
+    <meta
+      name="description"
+      content="Personal site of Michael Crismali — developer building things for the web."
+    />
+    <meta property="og:title" content="Michael Crismali" />
+    <meta
+      property="og:description"
+      content="Personal site of Michael Crismali — developer building things for the web."
+    />
+    <meta property="og:type" content="website" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <script>
+      const stored = localStorage.getItem('theme')
+      if (stored) document.documentElement.setAttribute('data-theme', stored)
+    </script>
     <noscript>
       <style>
         #contact-link {
