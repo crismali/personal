@@ -24,3 +24,7 @@ Single-page static site. Source lives in `src/`, scripts are at the project root
 - `src/styles/styles.scss` is the SCSS entry point. Import partials from here. The HTML references `styles.css`; both scripts compile and serve/output it.
 - `src/styles/_breakpoints.scss` — SCSS partial with `$breakpoints` map and `from()`, `until()`, `between()` mixins for responsive design. Import with `@use 'breakpoints' as *`.
 - No framework, no bundler config file — all build logic is inline in `dev.ts` and `build.ts`.
+
+## Code Style
+
+- Prefer full names over abbreviations in variable and parameter names (e.g. `button` not `btn`, `element` not `el`, `attribute` not `attr`).
