@@ -47,7 +47,7 @@ bun run typecheck
 bun run build
 ```
 
-Outputs minified HTML, CSS, and JS to `dist/`. Deploy the contents of `dist/` to any static host.
+Outputs to `dist/`. CSS is inlined into the HTML, JS is minified, and fonts are subsetted to only the characters used on the page. Deploy the contents of `dist/` to any static host.
 
 ## Project Structure
 
@@ -56,6 +56,7 @@ src/
   index.html           # HTML entry point
   favicon.svg          # Site favicon
   images/              # Static images
+  fonts/               # Source woff2 font files (subsetted at build time)
   styles/
     styles.scss        # Entry point (imports only)
     _theme.scss        # CSS custom properties and dark mode
