@@ -7,11 +7,13 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "ci": "bun run typecheck && bun run format:check && bun run build"
+    "test": "bun test",
+    "ci": "bun run typecheck && bun run format:check && bun run test && bun run build"
   },
   "devDependencies": {
     "@types/bun": "^1.3.14",
     "@types/html-minifier-terser": "^7.0.2",
+    "happy-dom": "^20.10.3",
     "html-minifier-terser": "^7.2.0",
     "prettier": "^3.8.4",
     "sass": "^1.101.0",

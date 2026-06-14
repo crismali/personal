@@ -2,7 +2,7 @@ type Theme = 'light' | 'dark'
 
 type ThemeOptions<T> = Record<Theme, T>
 
-function byTheme<T>(theme: Theme, options: ThemeOptions<T>): T {
+export function byTheme<T>(theme: Theme, options: ThemeOptions<T>): T {
   return options[theme]
 }
 

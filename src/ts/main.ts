@@ -3,19 +3,19 @@ import { initActiveNav } from './nav'
 
 console.log('Site loaded')
 
-const CAREER_START_YEAR = 2013
+export const CAREER_START_YEAR = 2013
 
-function setYearsExperience() {
+export function setYearsExperience() {
   const element = document.getElementById('years-experience')
   if (element) element.textContent = (new Date().getFullYear() - CAREER_START_YEAR).toString()
 }
 
-function setCurrentYear() {
+export function setCurrentYear() {
   const yearElement = document.getElementById('year')
   if (yearElement) yearElement.textContent = new Date().getFullYear().toString()
 }
 
-function setContactLink() {
+export function setContactLink() {
   const link = document.getElementById('contact-link')
   if (!link) return
   const parts = ['michael', '@', 'crismali', '.', 'com']
@@ -23,8 +23,10 @@ function setContactLink() {
   link.setAttribute('href', `mailto:${email}`)
 }
 
-setYearsExperience()
-setCurrentYear()
-setContactLink()
-initTheme()
-initActiveNav()
+if (typeof document !== 'undefined') {
+  setYearsExperience()
+  setCurrentYear()
+  setContactLink()
+  initTheme()
+  initActiveNav()
+}
