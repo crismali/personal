@@ -2,6 +2,9 @@
   "name": "personal",
   "version": "1.0.0",
   "scripts": {
+    "clean": "bun run clean:dev && bun run clean:build",
+    "clean:dev": "rm -rf src/_dist",
+    "clean:build": "rm -rf dist",
     "dev": "bun run dev.ts",
     "build": "bun run build.ts",
     "typecheck": "tsc --noEmit",
