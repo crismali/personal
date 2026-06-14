@@ -2,3 +2,4 @@ dist/
 src/_dist/
 node_modules/
 bun.lock
+.claude/
