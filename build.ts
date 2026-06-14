@@ -10,7 +10,7 @@ mkdirSync(OUT, { recursive: true })
 
 // Bundle JS/TS
 const result = await Bun.build({
-  entrypoints: [`${SRC}/main.ts`],
+  entrypoints: [`${SRC}/ts/main.ts`],
   outdir: OUT,
   naming: 'main.js',
   target: 'browser',
@@ -23,19 +23,19 @@ if (!result.success) {
 }
 
 // Compile SCSS
-const css = sass.compile(`${SRC}/styles.scss`, { style: 'compressed' })
+const css = sass.compile(`${SRC}/styles/styles.scss`, { style: 'compressed' })
 await Bun.write(`${OUT}/styles.css`, css.css)
 
-// Copy static assets (exclude TS and SCSS source)
+// Copy static assets (exclude TS and SCSS source folders)
 cpSync(SRC, OUT, {
   recursive: true,
   filter: (src: string) =>
-    !src.endsWith('.ts') && !src.endsWith('.scss') && !src.includes('/_dist'),
+    !src.includes('/ts') && !src.includes('/styles') && !src.includes('/_dist'),
 })
 
 // Rewrite script src in HTML
 const htmlPath = `${OUT}/index.html`
 const html = await Bun.file(htmlPath).text()
-await Bun.write(htmlPath, html.replace('src="main.ts"', 'src="main.js"'))
+await Bun.write(htmlPath, html.replace('src="ts/main.ts"', 'src="main.js"'))
 
 console.log('Built → dist/')

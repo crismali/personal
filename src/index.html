@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Site</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <noscript>
+      <style>
+        #contact-link {
+          display: none;
+        }
+      </style>
+    </noscript>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -12,25 +19,46 @@
     <header>
       <a href="#" class="logo" aria-label="Michael Crismali">🔥</a>
       <span class="site-name">Michael Crismali</span>
-      <nav>
+      <nav aria-label="Main">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Work</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#professional">Professional</a></li>
+          <li><a href="#personal">Personal</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
     <main id="main-content">
-      <h1>Hello, world</h1>
+      <section id="intro">
+        <h1>Hi, I'm Michael Crismali</h1>
+        <p>
+          I'm a developer based somewhere on the internet. I build things for the web and care about
+          clean code, good design, and accessible experiences.
+        </p>
+      </section>
+      <section id="professional">
+        <h2>Professional</h2>
+        <p>
+          I have experience building web applications across the full stack. I enjoy working with
+          teams to ship reliable, maintainable software that solves real problems.
+        </p>
+      </section>
+      <section id="personal">
+        <h2>Personal</h2>
+        <p>
+          Outside of work I enjoy exploring new technologies, spending time outdoors, and working on
+          side projects. I'm always looking for the next interesting problem to dig into.
+        </p>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p><a id="contact-link">Email me</a></p>
+        <noscript><p>Please enable JavaScript to view the contact link.</p></noscript>
+      </section>
     </main>
-    <section id="contact">
-      <h2>Contact</h2>
-      <p><a id="contact-link">Email me</a></p>
-    </section>
     <footer>
+      <a href="#main-content">Back to top</a>
       <p>&copy; <span id="year"></span> Michael Crismali</p>
     </footer>
-    <script type="module" src="main.ts"></script>
+    <script type="module" src="ts/main.ts"></script>
   </body>
 </html>

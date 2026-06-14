@@ -7,7 +7,7 @@ const PORT = 3000
 
 async function buildJS() {
   const result = await Bun.build({
-    entrypoints: [`${SRC}/main.ts`],
+    entrypoints: [`${SRC}/ts/main.ts`],
     outdir: `${SRC}/_dist`,
     naming: 'main.js',
     target: 'browser',
@@ -18,7 +18,7 @@ async function buildJS() {
 }
 
 async function buildCSS() {
-  const result = sass.compile(`${SRC}/styles.scss`)
+  const result = sass.compile(`${SRC}/styles/styles.scss`)
   await Bun.write(`${SRC}/_dist/styles.css`, result.css)
 }
 
@@ -31,7 +31,7 @@ Bun.serve({
     const url = new URL(req.url)
     let pathname = url.pathname === '/' ? '/index.html' : url.pathname
 
-    if (pathname === '/main.ts') pathname = '/_dist/main.js'
+    if (pathname === '/ts/main.ts') pathname = '/_dist/main.js'
     if (pathname === '/styles.css') pathname = '/_dist/styles.css'
 
     const file = Bun.file(`${SRC}${pathname}`)

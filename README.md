@@ -53,11 +53,14 @@ Outputs minified HTML, CSS, and JS to `dist/`. Deploy the contents of `dist/` to
 
 ```
 src/
-  index.html   # HTML entry point
-  styles.scss        # Global styles + normalize
-  _breakpoints.scss  # Responsive design mixins
-  main.ts            # TypeScript entry point
-dist/          # Production output (git-ignored)
-dev.ts         # Dev server
-build.ts       # Build script
+  index.html           # HTML entry point
+  favicon.svg          # Site favicon
+  styles/
+    styles.scss        # Global styles + normalize
+    _breakpoints.scss  # Responsive design mixins
+  ts/
+    main.ts            # TypeScript entry point
+dist/                  # Production output (git-ignored)
+dev.ts                 # Dev server
+build.ts               # Build script
 ```
