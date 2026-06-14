@@ -55,11 +55,15 @@ Outputs minified HTML, CSS, and JS to `dist/`. Deploy the contents of `dist/` to
 src/
   index.html           # HTML entry point
   favicon.svg          # Site favicon
+  images/              # Static images
   styles/
-    styles.scss        # Global styles + normalize
+    styles.scss        # Global styles entry point
+    _normalize.scss    # CSS reset and base styles
     _breakpoints.scss  # Responsive design mixins
   ts/
     main.ts            # TypeScript entry point
+    theme.ts           # Dark/light mode logic
+    nav.ts             # Active nav highlighting
 dist/                  # Production output (git-ignored)
 dev.ts                 # Dev server
 build.ts               # Build script
