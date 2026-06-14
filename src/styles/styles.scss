@@ -4,25 +4,28 @@
 :root {
   --font-body: 'DM Sans', system-ui, sans-serif;
   --font-heading: 'Nunito', system-ui, sans-serif;
-  --color-bg: #ffffff;
-  --color-text: #1a1a1a;
-  --color-muted: #555555;
-  --color-border: #dddddd;
+  --color-bg: #f9f7f4;
+  --color-text: #2e2a26;
+  --color-muted: #6b6560;
+  --color-border: #ddd9d4;
+  --color-accent: #c77d2f;
 }
 
 [data-theme='dark'] {
-  --color-bg: #1a1a1a;
-  --color-text: #f0f0f0;
-  --color-muted: #aaaaaa;
-  --color-border: #333333;
+  --color-bg: #1f1e1c;
+  --color-text: #ede9e3;
+  --color-muted: #a09890;
+  --color-border: #3a3835;
+  --color-accent: #d98f45;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --color-bg: #1a1a1a;
-    --color-text: #f0f0f0;
-    --color-muted: #aaaaaa;
-    --color-border: #333333;
+    --color-bg: #1f1e1c;
+    --color-text: #ede9e3;
+    --color-muted: #a09890;
+    --color-border: #3a3835;
+    --color-accent: #d98f45;
   }
 }
 
@@ -43,8 +46,13 @@ section {
   scroll-margin-top: 5rem;
 }
 
+a {
+  color: var(--color-accent);
+}
+
 nav a.active {
   font-weight: bold;
+  color: var(--color-accent);
 }
 
 :focus-visible {
@@ -58,8 +66,8 @@ nav a.active {
   left: 1rem;
   z-index: 9999;
   padding: 0.5rem 1rem;
-  background: #fff;
-  color: #000;
+  background: var(--color-bg);
+  color: var(--color-text);
   text-decoration: none;
   font-weight: bold;
   clip: auto;
