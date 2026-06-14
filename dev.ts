@@ -44,14 +44,14 @@ Bun.serve({
 
 console.log(`Dev server: http://localhost:${PORT}`)
 
-watch(SRC, { recursive: true }, async (_: string, filename: string | null) => {
-  if (!filename || filename.startsWith('_dist')) return
-  if (filename.endsWith('.ts')) {
-    await buildJS()
-    console.log('Rebuilt JS')
-  }
-  if (filename.endsWith('.scss')) {
-    await buildCSS()
-    console.log('Rebuilt CSS')
-  }
+watch(`${SRC}/ts`, { recursive: true }, async (_: string, filename: string | null) => {
+  if (!filename) return
+  await buildJS()
+  console.log('Rebuilt JS')
+})
+
+watch(`${SRC}/styles`, { recursive: true }, async (_: string, filename: string | null) => {
+  if (!filename) return
+  await buildCSS()
+  console.log('Rebuilt CSS')
 })
