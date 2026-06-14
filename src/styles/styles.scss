@@ -50,6 +50,22 @@ a {
   color: var(--color-accent);
 }
 
+figure img {
+  width: 100%;
+
+  @include from('tablet') {
+    width: 75%;
+  }
+
+  @include from('laptop') {
+    width: 50%;
+  }
+
+  @include from('desktop') {
+    width: 40%;
+  }
+}
+
 nav a.active {
   font-weight: bold;
   color: var(--color-accent);
