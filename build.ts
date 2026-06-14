@@ -10,6 +10,8 @@ const OUT = path.resolve(import.meta.dir, 'dist')
 rmSync(OUT, { recursive: true, force: true })
 mkdirSync(OUT, { recursive: true })
 
+console.log('🔨 Building...')
+
 // Bundle JS/TS
 const result = await Bun.build({
   entrypoints: [`${SRC}/ts/main.ts`],
@@ -23,10 +25,11 @@ if (!result.success) {
   for (const msg of result.logs) console.error(msg)
   process.exit(1)
 }
+console.log('⚡ JS bundled')
 
 // Compile SCSS
 const css = sass.compile(`${SRC}/styles/styles.scss`, { style: 'compressed' })
-await Bun.write(`${OUT}/styles.css`, css.css)
+console.log('🎨 CSS compiled')
 
 // Copy static assets (exclude TS, SCSS, and font source folders — fonts are subsetted below)
 cpSync(SRC, OUT, {
@@ -37,17 +40,24 @@ cpSync(SRC, OUT, {
     !src.includes('/_dist') &&
     !src.includes('/fonts'),
 })
+console.log('📁 Assets copied')
 
 // Rewrite script src and minify HTML
 const htmlPath = `${OUT}/index.html`
 const html = await Bun.file(htmlPath).text()
-const minifiedHtml = await minify(html.replace('src="ts/main.ts"', 'src="main.js"'), {
-  collapseWhitespace: true,
-  removeComments: true,
-  minifyCSS: true,
-  minifyJS: true,
-})
+const minifiedHtml = await minify(
+  html
+    .replace('src="ts/main.ts"', 'src="main.js"')
+    .replace('<link rel="stylesheet" href="styles.css" />', `<style>${css.css}</style>`),
+  {
+    collapseWhitespace: true,
+    removeComments: true,
+    minifyCSS: true,
+    minifyJS: true,
+  }
+)
 await Bun.write(htmlPath, minifiedHtml)
+console.log('📄 HTML minified + CSS inlined')
 
 // Subset fonts to characters used in the HTML + CSS
 const characters = [...new Set(minifiedHtml + css.css)].join('')
@@ -65,5 +75,6 @@ for (const font of fonts) {
   const subsetted = await subsetFont(Buffer.from(input), characters, { targetFormat: 'woff2' })
   await Bun.write(`${OUT}/fonts/${font.dest}`, subsetted)
 }
+console.log('🔤 Fonts subsetted')
 
-console.log('Built → dist/')
+console.log('✅ Built → dist/')

@@ -42,16 +42,16 @@ Bun.serve({
   },
 })
 
-console.log(`Dev server: http://localhost:${PORT}`)
+console.log(`🚀 Dev server: http://localhost:${PORT}`)
 
 watch(`${SRC}/ts`, { recursive: true }, async (_: string, filename: string | null) => {
   if (!filename) return
   await buildJS()
-  console.log('Rebuilt JS')
+  console.log(`⚡ JS rebuilt`)
 })
 
 watch(`${SRC}/styles`, { recursive: true }, async (_: string, filename: string | null) => {
   if (!filename) return
   await buildCSS()
-  console.log('Rebuilt CSS')
+  console.log(`🎨 CSS rebuilt`)
 })
