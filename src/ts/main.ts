@@ -3,6 +3,13 @@ import { initActiveNav } from './nav'
 
 console.log('Site loaded')
 
+const CAREER_START_YEAR = 2013
+
+function setYearsExperience() {
+  const element = document.getElementById('years-experience')
+  if (element) element.textContent = (new Date().getFullYear() - CAREER_START_YEAR).toString()
+}
+
 function setCurrentYear() {
   const yearElement = document.getElementById('year')
   if (yearElement) yearElement.textContent = new Date().getFullYear().toString()
@@ -16,6 +23,7 @@ function setContactLink() {
   link.setAttribute('href', `mailto:${email}`)
 }
 
+setYearsExperience()
 setCurrentYear()
 setContactLink()
 initTheme()

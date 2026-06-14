@@ -29,3 +29,4 @@ Single-page static site. Source lives in `src/`, scripts are at the project root
 ## Code Style
 
 - Prefer full names over abbreviations in variable and parameter names (e.g. `button` not `btn`, `element` not `el`, `attribute` not `attr`).
+- Prefer files under 100 lines; split into smaller files when approaching that limit. HTML files are exempt.

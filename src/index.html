@@ -37,21 +37,29 @@
   <body>
     <a href="#main-content" class="skip-to-content visually-hidden">Skip to content</a>
     <header>
-      <a href="#" class="logo" aria-label="Michael Crismali">🔥</a>
-      <span class="site-name">Michael Crismali</span>
-      <nav aria-label="Main">
-        <ul>
-          <li><a href="#professional">Professional</a></li>
-          <li><a href="#personal">Personal</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      <a href="#" class="header-identity" aria-label="Michael Crismali">
+        <span class="logo">🔥</span>
+        <span class="header-name">Michael Crismali</span>
+      </a>
+      <div class="header-right">
+        <nav aria-label="Main">
+          <ul>
+            <li><a href="#professional">Professional</a></li>
+            <li><a href="#personal">Personal</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
     </header>
     <main id="main-content">
-      <section id="intro">
+      <section>
         <h1>Hi, I'm Michael Crismali</h1>
-        <p>A full stack developer with 13 years of experience, currently freelancing in Chicago.</p>
+        <p class="title">Full Stack Software Engineer</p>
+        <p>
+          <span id="years-experience">13</span> years of experience, currently freelancing in
+          Chicago.
+        </p>
       </section>
       <section id="professional">
         <h2>Professional</h2>
@@ -62,38 +70,41 @@
           maintainable and well-tested. I currently work through
           <a href="https://semicolondesigngroup.com">Semicolon Design Group</a>.
         </p>
-        <aside>
-          <h3>Languages</h3>
-          <ul>
-            <li>JavaScript / TypeScript</li>
-            <li>Ruby</li>
-            <li>HTML &amp; CSS</li>
-            <li>SQL (PostgreSQL)</li>
-          </ul>
-        </aside>
-        <aside>
-          <h3>Frameworks &amp; Tools</h3>
-          <ul>
-            <li>React</li>
-            <li>React Native</li>
-            <li>Ruby on Rails</li>
-          </ul>
-        </aside>
-        <aside>
-          <h3>Practices</h3>
-          <ul>
-            <li>Test Driven Development</li>
-            <li>Agile</li>
-            <li>Human Centered Design</li>
-          </ul>
-        </aside>
+        <div class="skills">
+          <aside>
+            <h3>Languages</h3>
+            <ul>
+              <li>JavaScript / TypeScript</li>
+              <li>Ruby</li>
+              <li>HTML &amp; CSS</li>
+              <li>SQL (PostgreSQL)</li>
+            </ul>
+          </aside>
+          <aside>
+            <h3>Frameworks &amp; Tools</h3>
+            <ul>
+              <li>React</li>
+              <li>React Native</li>
+              <li>Ruby on Rails</li>
+            </ul>
+          </aside>
+          <aside>
+            <h3>Practices</h3>
+            <ul>
+              <li>Test Driven Development</li>
+              <li>Agile</li>
+              <li>Human Centered Design</li>
+            </ul>
+          </aside>
+        </div>
         <p>
           A few things I'm proud of: I volunteer as a developer for the
           <a href="https://chicagotoollibrary.org">Chicago Tool Library</a>, spoke at RailsConf
           2018, and have contributed to open source through projects like
           <a href="https://github.com/crismali/magic_lamp">MagicLamp</a>,
           <a href="https://github.com/crismali/fantaskspec">FantaskSpec</a>, and
-          <a href="https://github.com/madeintandem/jsonb_accessor">JsonbAccessor</a>.
+          <a href="https://github.com/madeintandem/jsonb_accessor">JsonbAccessor</a>. You can find
+          more of my work on <a href="https://github.com/crismali">GitHub</a>.
         </p>
       </section>
       <section id="personal">
@@ -114,8 +125,15 @@
       </section>
       <section id="contact">
         <h2>Contact</h2>
-        <p><a id="contact-link">Email me</a></p>
-        <noscript><p>Please enable JavaScript to view the contact link.</p></noscript>
+        <p>Interested in working together? Feel free to reach out.</p>
+        <noscript><p>Enable JavaScript to view the email link.</p></noscript>
+        <nav aria-label="Contact">
+          <ul class="contact-list">
+            <li><a id="contact-link">Email</a></li>
+            <li><a href="https://github.com/crismali">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/michael-crismali">LinkedIn</a></li>
+          </ul>
+        </nav>
       </section>
     </main>
     <footer>

@@ -57,9 +57,14 @@ src/
   favicon.svg          # Site favicon
   images/              # Static images
   styles/
-    styles.scss        # Global styles entry point
+    styles.scss        # Entry point (imports only)
+    _theme.scss        # CSS custom properties and dark mode
     _normalize.scss    # CSS reset and base styles
     _breakpoints.scss  # Responsive design mixins
+    _header.scss       # Header and nav styles
+    _layout.scss       # Main, section, and footer layout
+    _content.scss      # Typography, asides, figures, and sections
+    _utilities.scss    # Accessibility and utility classes
   ts/
     main.ts            # TypeScript entry point
     theme.ts           # Dark/light mode logic

@@ -1,0 +1,102 @@
+@use 'breakpoints' as *;
+
+a {
+  color: var(--color-accent);
+}
+
+.contact-list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+
+  a {
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.title {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+}
+
+section h2 {
+  margin-bottom: 1rem;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-block: 1.5rem;
+
+  aside {
+    flex: 1 1 10rem;
+    margin-block: 0;
+  }
+}
+
+aside {
+  background-color: var(--color-surface);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin-block: 1rem;
+
+  h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    list-style: none;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+figure img {
+  width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+#personal {
+  figure {
+    @include until('tablet') {
+      margin-top: 1rem;
+    }
+  }
+
+  @include from('tablet') {
+    h2 {
+      flex-basis: 100%;
+    }
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    column-gap: 2rem;
+
+    p {
+      flex: 1;
+    }
+
+    figure {
+      flex: 0 0 40%;
+    }
+  }
+}
