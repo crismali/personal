@@ -61,7 +61,7 @@ bun run typecheck
 bun run build
 ```
 
-Outputs to `dist/`. CSS is inlined into the HTML, JS is minified, fonts are subsetted to only the characters used on the page, and images are resized to responsive WebP sizes. Deploy the contents of `dist/` to any static host.
+Outputs to `dist/`. CSS is inlined into the HTML, JS is minified, fonts are subsetted to only the characters used on the page, images are resized to responsive WebP sizes, and the current git commit SHA is embedded in the JS bundle (visible in the browser console). Deploy the contents of `dist/` to any static host.
 
 ```bash
 bun run preview          # build + serve dist/ locally at :3000

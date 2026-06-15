@@ -31,7 +31,7 @@ PORT=3002 bun run preview  # use when you need to run the preview server
 Single-page static site. Source lives in `src/`, scripts are at the project root.
 
 - `dev.ts` — Bun HTTP server that serves `src/` directly. On startup and on file changes via `fs.watch`, compiles `src/ts/main.ts` → `src/_dist/main.js` and `src/styles/styles.scss` → `src/_dist/styles.css`. Rewrites `/ts/main.ts` → `/_dist/main.js` and `/styles.css` → `/_dist/styles.css` at request time.
-- `build.ts` — Bundles and minifies `src/ts/main.ts` via `Bun.build` (target: browser), compiles `src/styles/styles.scss` via `sass` (compressed), minifies HTML via `html-minifier-terser`, inlines CSS into the HTML, subsets fonts via `subset-font` to only characters used in the output, resizes `luna_napping` to 400w and 800w WebP and `avatar` to 300w WebP via `sharp`, copies non-TS/non-SCSS/non-font/non-image static assets to `dist/`.
+- `build.ts` — Bundles and minifies `src/ts/main.ts` via `Bun.build` (target: browser), compiles `src/styles/styles.scss` via `sass` (compressed), minifies HTML via `html-minifier-terser`, inlines CSS into the HTML, subsets fonts via `subset-font` to only characters used in the output, resizes `luna_napping` to 400w and 800w WebP and `avatar` to 300w WebP via `sharp`, injects the current git commit SHA via `Bun.build`'s `define` option (logged to the console at runtime), copies non-TS/non-SCSS/non-font/non-image static assets to `dist/`.
 - `src/ts/main.ts` is the sole JS/TS entry point. Add additional TS modules as imports from there.
 - `src/ts/theme.ts` — dark/light mode logic and theme toggle.
 - `src/ts/nav.ts` — active nav highlighting via IntersectionObserver.
