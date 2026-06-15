@@ -16,6 +16,9 @@
         "subset-font": "^2.5.0",
         "typescript": "^6.0.3",
       },
+      "optionalDependencies": {
+        "@img/sharp-linux-x64": "^0.35.1",
+      },
     },
   },
   "packages": {
