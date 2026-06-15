@@ -70,7 +70,7 @@ PORT=3002 bun run preview  # override port
 
 ## Deployment
 
-Deployed on [Cloudflare Pages](https://pages.cloudflare.com). On push to `main`, Cloudflare runs `bun run build` and deploys `dist/`.
+Deployed on [Cloudflare Pages](https://pages.cloudflare.com). Only the `production` and `staging` branches deploy; all other branches and the `*.pages.dev` wildcard URL are disabled.
 
 **Build settings:**
 
@@ -80,9 +80,8 @@ Deployed on [Cloudflare Pages](https://pages.cloudflare.com). On push to `main`,
 
 **Subdomains:**
 
-- `michaelcrismali.com` — production, mapped to `main` branch
-- `staging.michaelcrismali.com` — staging, mapped to `staging` branch
-- `<branch>.crismali.pages.dev` — automatic preview for any branch
+- `michaelcrismali.com` — production, mapped to `production` branch, open to all
+- `staging.michaelcrismali.com` — staging, mapped to `staging` branch, behind Cloudflare Access
 
 **Staging access control:**
 `staging.michaelcrismali.com` is protected by Cloudflare Access (Zero Trust → Access → Applications). Add or remove allowed emails there. Visitors authenticate via email OTP — no passwords required.
