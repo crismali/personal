@@ -1,7 +1,7 @@
 import { initTheme } from './theme'
 import { initActiveNav } from './nav'
 
-console.log('Site loaded')
+console.log('👋 Hey there! Really appreciate you poking around under the hood!')
 
 export const CAREER_START_YEAR = 2013
 
