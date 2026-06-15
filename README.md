@@ -20,13 +20,27 @@ bun run dev
 
 Starts a dev server at `http://localhost:3000`. TypeScript and SCSS files are rebuilt automatically on change.
 
+## Testing
+
+```bash
+bun run test
+```
+
+## Cleaning Build Artifacts
+
+```bash
+bun run clean        # remove src/_dist and dist/
+bun run clean:dev    # remove src/_dist only
+bun run clean:build  # remove dist/ only
+```
+
 ## CI Check
 
 ```bash
 bun run ci
 ```
 
-Runs type checking, format check, and production build in sequence.
+Runs type checking, format check, tests, and production build in sequence.
 
 ## Formatting
 
@@ -62,6 +76,7 @@ src/
     _theme.scss        # CSS custom properties and dark mode
     _normalize.scss    # CSS reset and base styles
     _breakpoints.scss  # Responsive design mixins
+    _fonts.scss        # @font-face declarations for self-hosted fonts
     _header.scss       # Header and nav styles
     _layout.scss       # Main, section, and footer layout
     _content.scss      # Typography, asides, figures, and sections
@@ -70,6 +85,7 @@ src/
     main.ts            # TypeScript entry point
     theme.ts           # Dark/light mode logic
     nav.ts             # Active nav highlighting
+    __tests__/         # Bun test files
 dist/                  # Production output (git-ignored)
 dev.ts                 # Dev server
 build.ts               # Build script
