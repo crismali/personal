@@ -3,7 +3,7 @@ import path from 'path'
 import * as sass from 'sass'
 
 const SRC = path.resolve(import.meta.dir, 'src')
-const PORT = 3000
+const PORT = Number(process.env.PORT ?? 3000)
 
 async function buildJS() {
   const result = await Bun.build({

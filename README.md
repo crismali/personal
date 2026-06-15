@@ -18,7 +18,7 @@ bun install
 bun run dev
 ```
 
-Starts a dev server at `http://localhost:3000`. TypeScript and SCSS files are rebuilt automatically on change.
+Starts a dev server at `http://localhost:3000`. TypeScript and SCSS files are rebuilt automatically on change. Override the port with `PORT=3001 bun run dev`.
 
 ## Testing
 
@@ -64,7 +64,8 @@ bun run build
 Outputs to `dist/`. CSS is inlined into the HTML, JS is minified, fonts are subsetted to only the characters used on the page, and images are resized to responsive WebP sizes. Deploy the contents of `dist/` to any static host.
 
 ```bash
-bun run preview  # build + serve dist/ locally for inspection
+bun run preview          # build + serve dist/ locally at :3000
+PORT=3002 bun run preview  # override port
 ```
 
 ## Deployment
@@ -90,7 +91,7 @@ Deployed on [Cloudflare Pages](https://pages.cloudflare.com). On push to `main`,
 src/
   index.html           # HTML entry point
   favicon.svg          # Site favicon
-  images/              # Static images
+  images/              # Static images (avatar.webp, luna_napping source + resized variants)
   fonts/               # Source woff2 font files (subsetted at build time)
   styles/
     styles.scss        # Entry point (imports only)

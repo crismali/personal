@@ -6,13 +6,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 bun install        # install dependencies
-bun run dev        # dev server at localhost:3000
+bun run dev        # dev server at localhost:3000 (override with PORT=XXXX bun run dev)
 bun run build      # production build → dist/
 bun run typecheck     # type check (tsc --noEmit)
 bun run format        # format all files with prettier
 bun run format:check  # check formatting without writing
 bun run test          # run tests with Bun
-bun run preview       # production build + serve dist/ locally
+bun run preview       # production build + serve dist/ locally at :3000 (override with PORT=XXXX bun run preview)
+```
+
+When running `dev` or `preview` yourself, use non-default ports to avoid conflicting with the user's running instances:
+
+```bash
+PORT=3001 bun run dev      # use when you need to run the dev server
+PORT=3002 bun run preview  # use when you need to run the preview server
 bun run ci            # typecheck + format:check + test + build
 bun run clean         # remove src/_dist and dist/
 bun run clean:dev     # remove src/_dist (compiled dev output)
@@ -24,7 +31,7 @@ bun run clean:build   # remove dist/ (production output)
 Single-page static site. Source lives in `src/`, scripts are at the project root.
 
 - `dev.ts` — Bun HTTP server that serves `src/` directly. On startup and on file changes via `fs.watch`, compiles `src/ts/main.ts` → `src/_dist/main.js` and `src/styles/styles.scss` → `src/_dist/styles.css`. Rewrites `/ts/main.ts` → `/_dist/main.js` and `/styles.css` → `/_dist/styles.css` at request time.
-- `build.ts` — Bundles and minifies `src/ts/main.ts` via `Bun.build` (target: browser), compiles `src/styles/styles.scss` via `sass` (compressed), minifies HTML via `html-minifier-terser`, inlines CSS into the HTML, subsets fonts via `subset-font` to only characters used in the output, resizes `luna_napping` to 400w and 800w WebP via `sharp`, copies non-TS/non-SCSS/non-font/non-image static assets to `dist/`.
+- `build.ts` — Bundles and minifies `src/ts/main.ts` via `Bun.build` (target: browser), compiles `src/styles/styles.scss` via `sass` (compressed), minifies HTML via `html-minifier-terser`, inlines CSS into the HTML, subsets fonts via `subset-font` to only characters used in the output, resizes `luna_napping` to 400w and 800w WebP and `avatar` to 300w WebP via `sharp`, copies non-TS/non-SCSS/non-font/non-image static assets to `dist/`.
 - `src/ts/main.ts` is the sole JS/TS entry point. Add additional TS modules as imports from there.
 - `src/ts/theme.ts` — dark/light mode logic and theme toggle.
 - `src/ts/nav.ts` — active nav highlighting via IntersectionObserver.

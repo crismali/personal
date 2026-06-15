@@ -40,17 +40,19 @@ cpSync(SRC, OUT, {
     !src.includes('/styles') &&
     !src.includes('/_dist') &&
     !src.includes('/fonts') &&
-    !src.includes('luna_napping'),
+    !src.includes('luna_napping') &&
+    !src.endsWith('avatar.webp'),
 })
 console.log('📁 Assets copied')
 
-// Resize luna image to 400w and 800w
-const lunaSource = `${SRC}/images/luna_napping.webp`
+// Resize images for production
 mkdirSync(`${OUT}/images`, { recursive: true })
+const lunaSource = `${SRC}/images/luna_napping.webp`
 await Promise.all([
   sharp(lunaSource).resize(400).webp().toFile(`${OUT}/images/luna_napping-400.webp`),
   sharp(lunaSource).resize(800).webp().toFile(`${OUT}/images/luna_napping-800.webp`),
   sharp(lunaSource).resize(400).png().toFile(`${OUT}/images/luna_napping-400.png`),
+  sharp(`${SRC}/images/avatar.webp`).resize(300).webp().toFile(`${OUT}/images/avatar.webp`),
 ])
 console.log('🖼️ Images resized')
 
