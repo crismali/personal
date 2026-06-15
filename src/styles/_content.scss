@@ -40,6 +40,7 @@ a {
     width: 160px;
     height: auto;
     border-radius: 0.75rem;
+    filter: var(--avatar-filter);
   }
 }
 
@@ -74,11 +75,13 @@ section h2 {
 .skills {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   margin-block: 1.5rem;
 
   aside {
     flex: 1 1 10rem;
+    max-width: 20rem;
     margin-block: 0;
   }
 }
@@ -111,7 +114,13 @@ figure img {
   width: 100%;
   height: auto;
   border-radius: 0.5rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--figure-shadow);
+  margin-bottom: 0.5rem;
+}
+
+figcaption {
+  font-size: 0.875rem;
+  color: var(--color-muted);
 }
 
 #personal {
