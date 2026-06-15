@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'bun:test'
-import { CAREER_START_YEAR, setYearsExperience, setCurrentYear, setContactLink } from '../main'
+import { CAREER_START_YEAR, setYearsExperience, setCurrentYear, setContactLink } from '../init'
 
 describe('CAREER_START_YEAR', () => {
   it('produces a reasonable years of experience count', () => {
