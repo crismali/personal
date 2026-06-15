@@ -1,0 +1,41 @@
+@use 'breakpoints' as *;
+
+figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: var(--figure-shadow);
+  margin-bottom: 0.5rem;
+}
+
+figcaption {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+#personal {
+  figure {
+    @include until('tablet') {
+      margin-top: 1rem;
+    }
+  }
+
+  @include from('tablet') {
+    h2 {
+      flex-basis: 100%;
+    }
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    column-gap: 2rem;
+
+    p {
+      flex: 1;
+    }
+
+    figure {
+      flex: 0 0 40%;
+    }
+  }
+}
