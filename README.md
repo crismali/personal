@@ -73,11 +73,13 @@ PORT=3002 bun run preview  # override port
 Deployed on [Cloudflare Pages](https://pages.cloudflare.com). On push to `main`, Cloudflare runs `bun run build` and deploys `dist/`.
 
 **Build settings:**
+
 - Build command: `bun run build`
 - Output directory: `dist`
 - Environment variable: `BUN_VERSION=1.3.14`
 
 **Subdomains:**
+
 - `michaelcrismali.com` — production, mapped to `main` branch
 - `staging.michaelcrismali.com` — staging, mapped to `staging` branch
 - `<branch>.crismali.pages.dev` — automatic preview for any branch
