@@ -1,9 +1,11 @@
-import { watch } from 'fs'
+import { watch, mkdirSync } from 'fs'
 import path from 'path'
 import * as sass from 'sass'
 
 const SRC = path.resolve(import.meta.dir, 'src')
 const PORT = Number(process.env.PORT ?? 3000)
+
+mkdirSync(`${SRC}/_dist`, { recursive: true })
 
 async function buildJS() {
   const result = await Bun.build({
@@ -22,8 +24,7 @@ async function buildCSS() {
   await Bun.write(`${SRC}/_dist/styles.css`, result.css)
 }
 
-await buildJS()
-await buildCSS()
+await Promise.all([buildJS(), buildCSS()])
 
 Bun.serve({
   port: PORT,
@@ -44,14 +45,22 @@ Bun.serve({
 
 console.log(`🚀 Dev server: http://localhost:${PORT}`)
 
-watch(`${SRC}/ts`, { recursive: true }, async (_: string, filename: string | null) => {
+watch(`${SRC}/ts`, { recursive: true }, async (_event: string, filename: string | null) => {
   if (!filename) return
-  await buildJS()
-  console.log(`⚡ JS rebuilt`)
+  try {
+    await buildJS()
+    console.log('⚡ JS rebuilt')
+  } catch (error) {
+    console.error('⚠️ JS build failed:', error)
+  }
 })
 
-watch(`${SRC}/styles`, { recursive: true }, async (_: string, filename: string | null) => {
+watch(`${SRC}/styles`, { recursive: true }, async (_event: string, filename: string | null) => {
   if (!filename) return
-  await buildCSS()
-  console.log(`🎨 CSS rebuilt`)
+  try {
+    await buildCSS()
+    console.log('🎨 CSS rebuilt')
+  } catch (error) {
+    console.error('⚠️ CSS build failed:', error)
+  }
 })
