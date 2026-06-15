@@ -74,7 +74,7 @@ Deployed on [Cloudflare Pages](https://pages.cloudflare.com). On push to `main`,
 
 **Build settings:**
 
-- Build command: `bun run build`
+- Build command: `bun install && bun run build`
 - Output directory: `dist`
 - Environment variable: `BUN_VERSION=1.3.14`
 

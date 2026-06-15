@@ -5,14 +5,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-bun install        # install dependencies
-bun run dev        # dev server at localhost:3000 (override with PORT=XXXX bun run dev)
-bun run build      # production build → dist/
+bun install           # install dependencies
+bun run dev           # dev server at localhost:3000 (override with PORT=XXXX bun run dev)
+bun run build         # production build → dist/
+bun run preview       # production build + serve dist/ locally at :3000 (override with PORT=XXXX bun run preview)
 bun run typecheck     # type check (tsc --noEmit)
 bun run format        # format all files with prettier
 bun run format:check  # check formatting without writing
 bun run test          # run tests with Bun
-bun run preview       # production build + serve dist/ locally at :3000 (override with PORT=XXXX bun run preview)
+bun run ci            # typecheck + format:check + test + build
+bun run clean         # remove src/_dist and dist/
+bun run clean:dev     # remove src/_dist (compiled dev output)
+bun run clean:build   # remove dist/ (production output)
 ```
 
 When running `dev` or `preview` yourself, use non-default ports to avoid conflicting with the user's running instances:
@@ -20,10 +24,6 @@ When running `dev` or `preview` yourself, use non-default ports to avoid conflic
 ```bash
 PORT=3001 bun run dev      # use when you need to run the dev server
 PORT=3002 bun run preview  # use when you need to run the preview server
-bun run ci            # typecheck + format:check + test + build
-bun run clean         # remove src/_dist and dist/
-bun run clean:dev     # remove src/_dist (compiled dev output)
-bun run clean:build   # remove dist/ (production output)
 ```
 
 ## Architecture
