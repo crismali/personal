@@ -1,7 +1,9 @@
 import { initTheme } from './theme'
 import { initActiveNav } from './nav'
 
-console.log('👋 Hey there! Really appreciate you poking around under the hood!')
+declare const __BUILD_SHA__: string | undefined
+const buildSha = typeof __BUILD_SHA__ !== 'undefined' ? ` (${__BUILD_SHA__})` : ''
+console.log(`👋 Hey there! Really appreciate you poking around under the hood!${buildSha}`)
 
 export const CAREER_START_YEAR = 2013
 

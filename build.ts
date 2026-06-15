@@ -13,6 +13,10 @@ mkdirSync(OUT, { recursive: true })
 
 console.log('🔨 Building...')
 
+// Get current git commit SHA
+const gitProc = Bun.spawn(['git', 'rev-parse', '--short', 'HEAD'])
+const buildSha = (await new Response(gitProc.stdout).text()).trim()
+
 // Bundle JS/TS
 const result = await Bun.build({
   entrypoints: [`${SRC}/ts/main.ts`],
@@ -20,6 +24,7 @@ const result = await Bun.build({
   naming: 'main.js',
   target: 'browser',
   minify: true,
+  define: { __BUILD_SHA__: JSON.stringify(buildSha) },
 })
 
 if (!result.success) {
