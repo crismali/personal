@@ -36,13 +36,13 @@ header {
   gap: 1.5rem;
 }
 
-nav ul {
+header nav ul {
   display: flex;
   gap: 1.5rem;
   list-style: none;
 }
 
-nav a {
+header nav a {
   text-decoration: none;
   color: var(--color-muted);
   font-size: 0.9rem;
@@ -81,7 +81,7 @@ header {
   }
 }
 
-nav ul {
+header nav ul {
   @include until('tablet') {
     gap: 1rem;
   }
