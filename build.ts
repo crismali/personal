@@ -3,6 +3,7 @@ import path from 'path'
 import * as sass from 'sass'
 import { minify } from 'html-minifier-terser'
 import subsetFont from 'subset-font'
+import sharp from 'sharp'
 
 const SRC = path.resolve(import.meta.dir, 'src')
 const OUT = path.resolve(import.meta.dir, 'dist')
@@ -31,16 +32,27 @@ console.log('⚡ JS bundled')
 const css = sass.compile(`${SRC}/styles/styles.scss`, { style: 'compressed' })
 console.log('🎨 CSS compiled')
 
-// Copy static assets (exclude TS, SCSS, and font source folders — fonts are subsetted below)
+// Copy static assets (exclude TS, SCSS, font sources, and original luna images — those are resized below)
 cpSync(SRC, OUT, {
   recursive: true,
   filter: (src: string) =>
     !src.includes('/ts') &&
     !src.includes('/styles') &&
     !src.includes('/_dist') &&
-    !src.includes('/fonts'),
+    !src.includes('/fonts') &&
+    !src.includes('luna_napping'),
 })
 console.log('📁 Assets copied')
+
+// Resize luna image to 400w and 800w
+const lunaSource = `${SRC}/images/luna_napping.webp`
+mkdirSync(`${OUT}/images`, { recursive: true })
+await Promise.all([
+  sharp(lunaSource).resize(400).webp().toFile(`${OUT}/images/luna_napping-400.webp`),
+  sharp(lunaSource).resize(800).webp().toFile(`${OUT}/images/luna_napping-800.webp`),
+  sharp(lunaSource).resize(400).png().toFile(`${OUT}/images/luna_napping-400.png`),
+])
+console.log('🖼️ Images resized')
 
 // Rewrite script src and minify HTML
 const htmlPath = `${OUT}/index.html`

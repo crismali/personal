@@ -11,15 +11,18 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "bun test",
-    "ci": "bun run typecheck && bun run format:check && bun run test && bun run build"
+    "ci": "bun run typecheck && bun run format:check && bun run test && bun run build",
+    "preview": "bun run build && bunx serve dist/"
   },
   "devDependencies": {
     "@types/bun": "^1.3.14",
     "@types/html-minifier-terser": "^7.0.2",
+    "@types/sharp": "^0.32.0",
     "happy-dom": "^20.10.3",
     "html-minifier-terser": "^7.2.0",
     "prettier": "^3.8.4",
     "sass": "^1.101.0",
+    "sharp": "^0.35.1",
     "subset-font": "^2.5.0",
     "typescript": "^6.0.3"
   }

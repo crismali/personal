@@ -26,6 +26,8 @@
         }
       </style>
     </noscript>
+    <link rel="preload" href="fonts/dm-sans-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/nunito.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -62,7 +64,7 @@
           JavaScript/TypeScript, Ruby on Rails, React, and React Native. I'm comfortable with the
           whole picture — from database design to UI — and I care about writing code that's
           maintainable and well-tested. I currently work through
-          <a href="https://semicolondesigngroup.com">Semicolon Design Group</a>.
+          <a href="https://www.semicolon.group/the-group">Semicolon Design Group</a>.
         </p>
         <div class="skills">
           <aside>
@@ -111,8 +113,18 @@
         </p>
         <figure>
           <picture>
-            <source srcset="images/luna_napping.webp" type="image/webp" />
-            <img src="images/luna_napping.png" alt="Luna the dog napping" />
+            <source
+              type="image/webp"
+              srcset="images/luna_napping-400.webp 400w, images/luna_napping-800.webp 800w"
+              sizes="(min-width: 48rem) 400px, 100vw"
+            />
+            <img
+              src="images/luna_napping-400.png"
+              alt="Luna the dog napping"
+              width="400"
+              height="300"
+              fetchpriority="high"
+            />
           </picture>
           <figcaption>Luna, napping (her specialty)</figcaption>
         </figure>
