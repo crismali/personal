@@ -32,7 +32,8 @@ Single-page static site. Source lives in `src/`, scripts are at the project root
 
 - `dev.ts` — Bun HTTP server that serves `src/` directly. On startup and on file changes via `fs.watch`, compiles `src/ts/main.ts` → `src/_dist/main.js` and `src/styles/styles.scss` → `src/_dist/styles.css`. Rewrites `/ts/main.ts` → `/_dist/main.js` and `/styles.css` → `/_dist/styles.css` at request time.
 - `build.ts` — Bundles and minifies `src/ts/main.ts` via `Bun.build` (target: browser), compiles `src/styles/styles.scss` via `sass` (compressed), minifies HTML via `html-minifier-terser`, inlines CSS into the HTML, subsets fonts via `subset-font` to only characters used in the output, resizes `luna_napping` to 400w and 800w WebP and `avatar` to 300w WebP via `sharp`, injects the current git commit SHA via `Bun.build`'s `define` option (logged to the console at runtime), copies non-TS/non-SCSS/non-font/non-image static assets to `dist/`.
-- `src/ts/main.ts` is the sole JS/TS entry point. Add additional TS modules as imports from there.
+- `src/ts/main.ts` is the JS/TS entry point. Add additional TS modules as imports from there.
+- `src/ts/init.ts` — DOM initialization helpers: sets years of experience, current year, and contact link (assembled at runtime to avoid scraping).
 - `src/ts/theme.ts` — dark/light mode logic and theme toggle.
 - `src/ts/nav.ts` — active nav highlighting via IntersectionObserver.
 - `src/ts/__tests__/` — Bun test files; uses `happy-dom` via preload in `bunfig.toml` for DOM testing.
@@ -44,7 +45,10 @@ Single-page static site. Source lives in `src/`, scripts are at the project root
 - `src/styles/_fonts.scss` — `@font-face` declarations for self-hosted DM Sans and Nunito woff2 fonts.
 - `src/styles/_header.scss` — sticky header, nav, and theme toggle styles.
 - `src/styles/_layout.scss` — main container, section spacing, and footer layout.
-- `src/styles/_content.scss` — typography, aside cards, figures, and section-specific styles.
+- `src/styles/_intro.scss` — intro/hero section styles.
+- `src/styles/_professional.scss` — professional section styles (skills, experience).
+- `src/styles/_personal.scss` — personal section styles (figures, images).
+- `src/styles/_content.scss` — shared typography, aside cards, and cross-section content styles.
 - `src/styles/_utilities.scss` — accessibility and utility classes (skip link, visually-hidden, focus-visible).
 - No framework, no bundler config file — all build logic is inline in `dev.ts` and `build.ts`.
 

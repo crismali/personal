@@ -70,7 +70,7 @@ PORT=3002 bun run preview  # override port
 
 ## Deployment
 
-Deployed on [Cloudflare Pages](https://pages.cloudflare.com). Only the `production` and `staging` branches deploy; all other branches and the `*.pages.dev` wildcard URL are disabled.
+Deployed on [Cloudflare Pages](https://pages.cloudflare.com). Only the `production` and `staging` branches deploy; all other branches are disabled.
 
 **Build settings:**
 
@@ -81,6 +81,7 @@ Deployed on [Cloudflare Pages](https://pages.cloudflare.com). Only the `producti
 **Subdomains:**
 
 - `michaelcrismali.com` — production, mapped to `production` branch, open to all
+- `michaelcrismali.pages.dev` — Cloudflare Pages default URL, publicly accessible, mirrors production branch
 - `staging.michaelcrismali.com` — staging, mapped to `staging` branch, behind Cloudflare Access
 
 **Staging access control:**
@@ -102,10 +103,14 @@ src/
     _fonts.scss        # @font-face declarations for self-hosted fonts
     _header.scss       # Header and nav styles
     _layout.scss       # Main, section, and footer layout
-    _content.scss      # Typography, asides, figures, and sections
+    _intro.scss        # Intro/hero section styles
+    _professional.scss # Professional section styles
+    _personal.scss     # Personal section styles
+    _content.scss      # Shared typography, asides, and cross-section styles
     _utilities.scss    # Accessibility and utility classes
   ts/
     main.ts            # TypeScript entry point
+    init.ts            # DOM initialization helpers (years experience, year, contact link)
     theme.ts           # Dark/light mode logic
     nav.ts             # Active nav highlighting
     __tests__/         # Bun test files
