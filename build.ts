@@ -65,7 +65,8 @@ const html = await Bun.file(`${OUT}/index.html`).text()
 const minifiedHtml = await minify(
   html
     .replace('src="ts/main.ts"', 'src="main.js"')
-    .replace('<link rel="stylesheet" href="styles.css" />', `<style>${css.css}</style>`),
+    .replace('<link rel="stylesheet" href="styles.css" />', `<style>${css.css}</style>`)
+    .replace('</head>', '<link rel="modulepreload" href="main.js" /></head>'),
   { collapseWhitespace: true, removeComments: true, minifyCSS: true, minifyJS: true }
 )
 await Bun.write(`${OUT}/index.html`, minifiedHtml)
