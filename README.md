@@ -92,6 +92,7 @@ Deployed on [Cloudflare Pages](https://pages.cloudflare.com). Only the `producti
 ```
 src/
   index.html           # HTML entry point
+  robots.txt           # Crawl directives (copied to dist/ at build time)
   favicon.svg          # Site favicon
   images/              # Static images (avatar.webp, luna_napping source + resized variants)
   fonts/               # Source woff2 font files (subsetted at build time)
