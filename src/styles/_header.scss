@@ -13,6 +13,11 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+
+  @include until('tablet') {
+    padding: 0 1rem;
+    gap: 0.75rem;
+  }
 }
 
 .header-identity {
@@ -34,12 +39,20 @@ header {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+
+  @include until('tablet') {
+    gap: 1rem;
+  }
 }
 
 header nav ul {
   display: flex;
   gap: 1.5rem;
   list-style: none;
+
+  @include until('tablet') {
+    gap: 1rem;
+  }
 }
 
 header nav a {
@@ -71,24 +84,5 @@ header nav a {
 .header-name {
   @include until('tablet') {
     display: none;
-  }
-}
-
-header {
-  @include until('tablet') {
-    padding: 0 1rem;
-    gap: 0.75rem;
-  }
-}
-
-header nav ul {
-  @include until('tablet') {
-    gap: 1rem;
-  }
-}
-
-.header-right {
-  @include until('tablet') {
-    gap: 1rem;
   }
 }
