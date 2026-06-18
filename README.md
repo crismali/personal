@@ -99,7 +99,7 @@ build.ts               # Build script (orchestrator)
 dev.ts                 # Dev server
 dist/                  # Production output (git-ignored)
 src/
-  _redirects           # Cloudflare Pages redirect rules — unknown paths → / (copied to dist/ at build time)
+  404.html             # Custom 404 page — redirects unmatched paths to / (copied to dist/ at build time)
   favicon.svg          # Site favicon
   fonts/               # Source woff2 font files (subsetted at build time)
   images/              # Static images (avatar.webp, luna_napping source + resized variants)
