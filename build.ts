@@ -3,7 +3,7 @@ import path from 'path'
 import * as sass from 'sass'
 import { minify } from 'html-minifier-terser'
 import subsetFont from 'subset-font'
-import sharp from 'sharp'
+import { processImages } from './build-images'
 
 const SRC = path.resolve(import.meta.dir, 'src')
 const OUT = path.resolve(import.meta.dir, 'dist')
@@ -42,23 +42,16 @@ const [result, css] = await Promise.all([
     })
   ),
 
-  (async () => {
-    mkdirSync(`${OUT}/images`, { recursive: true })
-    const lunaSource = `${SRC}/images/luna_napping.webp`
-    await Promise.all([
-      sharp(lunaSource).resize(400).webp().toFile(`${OUT}/images/luna_napping-400.webp`),
-      sharp(lunaSource).resize(800).webp().toFile(`${OUT}/images/luna_napping-800.webp`),
-      sharp(lunaSource).resize(400).png().toFile(`${OUT}/images/luna_napping-400.png`),
-      sharp(`${SRC}/images/avatar.webp`).resize(300).webp().toFile(`${OUT}/images/avatar.webp`),
-    ])
-  })(),
+  processImages(SRC, OUT),
 ])
 
 if (!result.success) {
   for (const msg of result.logs) console.error(msg)
   process.exit(1)
 }
-console.log('⚡ JS bundled  🎨 CSS compiled  📁 Assets copied  🖼️ Images resized')
+console.log(
+  '⚡ JS bundled  🎨 CSS compiled  📁 Assets copied  🖼️ Images resized  🌄 OG image generated'
+)
 
 // Phase 2: HTML needs CSS (phase 1) and the copied index.html (phase 1)
 const html = await Bun.file(`${OUT}/index.html`).text()
