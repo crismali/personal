@@ -1,0 +1,37 @@
+# Michael Crismali
+
+Full stack software engineer based in Chicago, currently freelancing through [Semicolon Design Group](https://www.semicolon.group/the-group).
+
+## Contact
+
+- GitHub: https://github.com/crismali
+- LinkedIn: https://www.linkedin.com/in/michael-crismali
+
+## Professional
+
+13+ years of experience (started 2013). Helps teams ship quality features for customers and internal users. Comfortable working across the full stack and with infrastructure when needed. Values maintainable, well-tested code.
+
+### Skills
+
+- JavaScript / TypeScript
+- Ruby on Rails
+- React / React Native
+- HTML & CSS
+- SQL (PostgreSQL)
+
+### How I Work
+
+- Test-driven development
+- Comfortable working with anyone, from customers to executives
+- Brings calm and steadiness to fast-moving teams
+
+### Open Source & Community
+
+- Volunteer developer for the [Chicago Tool Library](https://chicagotoollibrary.org)
+- Speaker at RailsConf 2018
+- Author of [MagicLamp](https://github.com/crismali/magic_lamp) and [FantaskSpec](https://github.com/crismali/fantaskspec)
+- Contributor to [JsonbAccessor](https://github.com/madeintandem/jsonb_accessor)
+
+## Personal
+
+Lives in Chicago with his wife and their 14-year-old dog, Luna. Interests include biking, movies, concerts, comic books, homemade ice cream, gardening, and slowly learning Italian.

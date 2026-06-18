@@ -50,6 +50,7 @@ Single-page static site. Source lives in `src/`, scripts are at the project root
 - `src/styles/_personal.scss` — personal section styles (figures, images).
 - `src/styles/_content.scss` — shared typography, aside cards, and cross-section content styles.
 - `src/styles/_utilities.scss` — accessibility and utility classes (skip link, visually-hidden, focus-visible).
+- `src/llms.txt` — machine-readable markdown profile for LLM/agent consumption; referenced via `<link rel="llms">` in the HTML head; copied to `dist/` at build time.
 - No framework, no bundler config file — all build logic is inline in `dev.ts` and `build.ts`.
 
 ## Code Style
