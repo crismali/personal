@@ -59,3 +59,4 @@ Single-page static site. Source lives in `src/`, scripts are at the project root
 
 - Prefer full names over abbreviations in variable and parameter names (e.g. `button` not `btn`, `element` not `el`, `attribute` not `attr`).
 - Prefer files under 100 lines; split into smaller files when approaching that limit. HTML files are exempt.
+- Use absolute paths (leading `/`) for image `src` and `srcset` attributes in HTML.
