@@ -55,6 +55,10 @@ bun run format:check  # check formatting without writing
 bun run typecheck
 ```
 
+## Maintenance Notes
+
+- The `meta[name="description"]` and `og:description` tags in `src/index.html` hardcode the years of experience — update them manually each year.
+
 ## Production Build
 
 ```bash
