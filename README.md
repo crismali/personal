@@ -94,35 +94,36 @@ Deployed on [Cloudflare Pages](https://pages.cloudflare.com). Only the `producti
 ## Project Structure
 
 ```
+build-images.ts        # Image processing (resize variants + OG image generation)
+build.ts               # Build script (orchestrator)
+dev.ts                 # Dev server
+dist/                  # Production output (git-ignored)
 src/
-  index.html           # HTML entry point
-  robots.txt           # Crawl directives (copied to dist/ at build time)
-  llms.txt             # Machine-readable profile for LLM/agent consumption (copied to dist/ at build time)
-  sitemap.xml          # XML sitemap for search engine indexing (copied to dist/ at build time)
+  _redirects           # Cloudflare Pages redirect rules — unknown paths → / (copied to dist/ at build time)
   favicon.svg          # Site favicon
-  images/              # Static images (avatar.webp, luna_napping source + resized variants)
   fonts/               # Source woff2 font files (subsetted at build time)
+  images/              # Static images (avatar.webp, luna_napping source + resized variants)
+  index.html           # HTML entry point
+  llms.txt             # Machine-readable profile for LLM/agent consumption (copied to dist/ at build time)
+  robots.txt           # Crawl directives (copied to dist/ at build time)
+  sitemap.xml          # XML sitemap for search engine indexing (copied to dist/ at build time)
   styles/
-    styles.scss        # Entry point (imports only)
-    _theme.scss        # CSS custom properties and dark mode
-    _normalize.scss    # CSS reset and base styles
     _breakpoints.scss  # Responsive design mixins
+    _content.scss      # Shared typography, asides, and cross-section styles
     _fonts.scss        # @font-face declarations for self-hosted fonts
     _header.scss       # Header and nav styles
-    _layout.scss       # Main, section, and footer layout
     _intro.scss        # Intro/hero section styles
-    _professional.scss # Professional section styles
+    _layout.scss       # Main, section, and footer layout
+    _normalize.scss    # CSS reset and base styles
     _personal.scss     # Personal section styles
-    _content.scss      # Shared typography, asides, and cross-section styles
+    _professional.scss # Professional section styles
+    _theme.scss        # CSS custom properties and dark mode
     _utilities.scss    # Accessibility and utility classes
+    styles.scss        # Entry point (imports only)
   ts/
-    main.ts            # TypeScript entry point
-    init.ts            # DOM initialization helpers (years experience, year, contact link)
-    theme.ts           # Dark/light mode logic
-    nav.ts             # Active nav highlighting
     __tests__/         # Bun test files
-dist/                  # Production output (git-ignored)
-dev.ts                 # Dev server
-build.ts               # Build script (orchestrator)
-build-images.ts        # Image processing (resize variants + OG image generation)
+    init.ts            # DOM initialization helpers (years experience, year, contact link)
+    main.ts            # TypeScript entry point
+    nav.ts             # Active nav highlighting
+    theme.ts           # Dark/light mode logic
 ```
