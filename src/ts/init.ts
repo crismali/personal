@@ -10,10 +10,25 @@ export function setCurrentYear() {
   if (yearElement) yearElement.textContent = new Date().getFullYear().toString()
 }
 
+function rot13(string: string): string {
+  return string.replace(/[a-zA-Z]/g, (character) => {
+    const base = character < 'a' ? 65 : 97
+    return String.fromCharCode(((character.charCodeAt(0) - base + 13) % 26) + base)
+  })
+}
+
 export function setContactLink() {
   const link = document.getElementById('contact-link')
   if (!link) return
-  const parts = ['michael', '@', 'crismali', '.', 'com']
-  const email = parts.join('')
-  link.setAttribute('href', `mailto:${email}`)
+  const encoded = 'zvpunry@pevfznyv.pbz'
+  link.setAttribute('href', '#contact')
+  link.addEventListener(
+    'click',
+    (event) => {
+      event.preventDefault()
+      link.setAttribute('href', `mailto:${rot13(encoded)}`)
+      link.click()
+    },
+    { once: true }
+  )
 }

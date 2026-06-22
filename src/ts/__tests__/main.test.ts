@@ -47,11 +47,16 @@ describe('setContactLink', () => {
     document.body.innerHTML = '<a id="contact-link">Email</a>'
   })
 
-  it('sets the href to the correct mailto link', () => {
+  it('sets href to #contact initially', () => {
     setContactLink()
-    expect(document.getElementById('contact-link')?.getAttribute('href')).toBe(
-      'mailto:michael@crismali.com'
-    )
+    expect(document.getElementById('contact-link')?.getAttribute('href')).toBe('#contact')
+  })
+
+  it('decodes mailto on first click', () => {
+    setContactLink()
+    const link = document.getElementById('contact-link') as HTMLAnchorElement
+    link.click()
+    expect(link.getAttribute('href')).toBe('mailto:michael@crismali.com')
   })
 
   it('does nothing if the element is missing', () => {
