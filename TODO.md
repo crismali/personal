@@ -7,4 +7,4 @@
 - [ ] Improve CSP (eliminate `unsafe-inline` on `script-src` — requires solving inline theme script hash + minification)
 - [x] Set up HSTS policy
 - [x] Ensure proper isolation with COOP
-- [ ] Mitigate DOM-based attacks with Trusted Types
+- [x] Mitigate DOM-based attacks with Trusted Types
