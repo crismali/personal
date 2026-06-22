@@ -82,10 +82,19 @@ await Bun.write(`${OUT}/index.html`, htmlWithCssMap)
 const inlineScriptMatch = htmlWithCssMap.match(/<script>([^<]*)<\/script>/)
 if (!inlineScriptMatch) throw new Error('No inline <script> found to hash for CSP')
 const scriptHash = createHash('sha256').update(inlineScriptMatch[1]).digest('base64')
+
+const styleMatches = [...htmlWithCssMap.matchAll(/<style>([^<]*)<\/style>/g)]
+if (styleMatches.length === 0) throw new Error('No inline <style> found to hash for CSP')
+const styleHashes = styleMatches.map((match) =>
+  createHash('sha256').update(match[1]).digest('base64')
+)
+
 const headers = await Bun.file(`${OUT}/_headers`).text()
 await Bun.write(
   `${OUT}/_headers`,
-  headers.replace('__INLINE_SCRIPT_HASH__', `sha256-${scriptHash}`)
+  headers
+    .replace('__INLINE_SCRIPT_HASH__', `sha256-${scriptHash}`)
+    .replace('__INLINE_STYLE_HASHES__', styleHashes.map((hash) => `'sha256-${hash}'`).join(' '))
 )
 console.log('📄 HTML minified + CSS inlined  🔒 CSP script hash injected')
 
