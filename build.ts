@@ -83,7 +83,6 @@ console.log('📄 HTML minified + CSS inlined')
 const characters = [...new Set(htmlWithCssMap + css.css)].join('')
 const fonts = [
   { src: 'dm-sans-normal.woff2', dest: 'dm-sans-normal.woff2' },
-  { src: 'dm-sans-italic.woff2', dest: 'dm-sans-italic.woff2' },
   { src: 'nunito.woff2', dest: 'nunito.woff2' },
 ]
 mkdirSync(`${OUT}/fonts`, { recursive: true })

@@ -39,7 +39,7 @@ Single-page static site. Source lives in `src/`, scripts are at the project root
 - `src/ts/nav.ts` — active nav highlighting via IntersectionObserver.
 - `src/ts/__tests__/` — Bun test files; uses `happy-dom` via preload in `bunfig.toml` for DOM testing.
 - `src/styles/styles.scss` is the SCSS entry point (imports only). In dev, the compiled CSS is served as `styles.css`; in production it is inlined into the HTML.
-- `src/fonts/` — source woff2 font files. In production, subsetted copies are written to `dist/fonts/`.
+- `src/fonts/` — source woff2 font files (`dm-sans-normal.woff2`, `nunito.woff2`). In production, subsetted copies are written to `dist/fonts/`. The italic DM Sans variant is not used and not included in the build.
 - `src/styles/_theme.scss` — CSS custom properties for colors and typography; dark mode via `@mixin dark-theme`.
 - `src/styles/_normalize.scss` — CSS reset and base styles (box-sizing, typography, reduced-motion, smooth scroll). Imported by `styles.scss`.
 - `src/styles/_breakpoints.scss` — SCSS partial with `$breakpoints` map and `from()`, `until()`, `between()` mixins for responsive design. Import with `@use 'breakpoints' as *`.
