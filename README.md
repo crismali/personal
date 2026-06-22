@@ -101,6 +101,7 @@ dev.ts                 # Dev server
 dist/                  # Production output (git-ignored)
 src/
   404.html             # Custom 404 page — redirects unmatched paths to / (copied to dist/ at build time)
+  _headers             # Cloudflare Pages HTTP response headers: CSP, X-Frame-Options, etc. (copied to dist/ at build time)
   favicon.svg          # Site favicon
   fonts/               # Source woff2 font files (subsetted at build time)
   images/              # Static images (avatar.webp, luna_napping source + resized variants)
