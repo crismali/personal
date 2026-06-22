@@ -2,3 +2,9 @@
 
 - [ ] Check Google Search Console security review status (requested 2026-06-21)
 - [x] Add CSP + security headers via Cloudflare Pages `_headers` file
+
+## Lighthouse Best Practices
+- [ ] Improve CSP (eliminate `unsafe-inline` on `script-src` — requires solving inline theme script hash + minification)
+- [x] Set up HSTS policy
+- [x] Ensure proper isolation with COOP
+- [ ] Mitigate DOM-based attacks with Trusted Types
