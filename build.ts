@@ -52,6 +52,9 @@ if (css.sourceMap) {
   await Bun.write(`${OUT}/styles.css.map`, JSON.stringify(css.sourceMap))
 }
 
+const mainJs = await Bun.file(`${OUT}/main.js`).text()
+await Bun.write(`${OUT}/main.js`, `${mainJs}\n//# sourceMappingURL=main.js.map`)
+
 if (!result.success) {
   for (const msg of result.logs) console.error(msg)
   process.exit(1)
@@ -69,11 +72,15 @@ const minifiedHtml = await minify(
     .replace('</head>', '<link rel="modulepreload" href="/main.js" /></head>'),
   { collapseWhitespace: true, removeComments: true, minifyCSS: true, minifyJS: true }
 )
-await Bun.write(`${OUT}/index.html`, minifiedHtml)
+const htmlWithCssMap = minifiedHtml.replace(
+  '</style>',
+  '/*# sourceMappingURL=/styles.css.map */</style>'
+)
+await Bun.write(`${OUT}/index.html`, htmlWithCssMap)
 console.log('📄 HTML minified + CSS inlined')
 
 // Phase 3: font subsetting needs the minified HTML + CSS (phase 2)
-const characters = [...new Set(minifiedHtml + css.css)].join('')
+const characters = [...new Set(htmlWithCssMap + css.css)].join('')
 const fonts = [
   { src: 'dm-sans-normal.woff2', dest: 'dm-sans-normal.woff2' },
   { src: 'dm-sans-italic.woff2', dest: 'dm-sans-italic.woff2' },
