@@ -66,7 +66,7 @@ bun run typecheck
 bun run build
 ```
 
-Outputs to `dist/`. CSS is inlined into the HTML, JS is minified, fonts are subsetted to only the characters used on the page, images are resized to responsive WebP sizes, a 1200×627 OG image (`og.png`) is generated for social sharing, and the current git commit SHA is embedded in the JS bundle (visible in the browser console). Source maps (`main.js.map`, `styles.css.map`) are written to `dist/` for production debugging. Deploy the contents of `dist/` to any static host.
+Outputs to `dist/`. CSS is inlined into the HTML, JS is minified, fonts are subsetted to only the characters used on the page, images are resized to responsive WebP sizes, a 1200×627 OG image (`og.png`) is generated for social sharing, and the current git commit SHA is embedded in the JS bundle (visible in the browser console). The inline `<script>` and `<style>` blocks are hashed (SHA-256) and the hashes are written into `dist/_headers`, so the deployed CSP can avoid `'unsafe-inline'` on `script-src`/`style-src`. Source maps (`main.js.map`, `styles.css.map`) are written to `dist/` for production debugging. Deploy the contents of `dist/` to any static host.
 
 ```bash
 bun run preview          # build + serve dist/ locally at :3000
