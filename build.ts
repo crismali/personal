@@ -24,10 +24,13 @@ const [result, css] = await Promise.all([
     naming: 'main.js',
     target: 'browser',
     minify: true,
+    sourcemap: 'external',
     define: { __BUILD_SHA__: JSON.stringify(buildSha) },
   }),
 
-  Promise.resolve(sass.compile(`${SRC}/styles/styles.scss`, { style: 'compressed' })),
+  Promise.resolve(
+    sass.compile(`${SRC}/styles/styles.scss`, { style: 'compressed', sourceMap: true })
+  ),
 
   Promise.resolve(
     cpSync(SRC, OUT, {
@@ -44,6 +47,10 @@ const [result, css] = await Promise.all([
 
   processImages(SRC, OUT),
 ])
+
+if (css.sourceMap) {
+  await Bun.write(`${OUT}/styles.css.map`, JSON.stringify(css.sourceMap))
+}
 
 if (!result.success) {
   for (const msg of result.logs) console.error(msg)
