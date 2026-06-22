@@ -59,6 +59,9 @@ bun run typecheck
 
 - The `meta[name="description"]` and `og:description` tags in `src/index.html` hardcode the years of experience — update them manually each year.
 - The `<lastmod>` date in `src/sitemap.xml` should be updated manually whenever the content changes.
+- `src/_headers` must keep the `__INLINE_SCRIPT_HASH__` and `__INLINE_STYLE_HASHES__` placeholders in `script-src`/`style-src` — `build-csp.ts` replaces them at build time and the build fails if either placeholder is missing or no matching inline `<script>`/`<style>` tag is found.
+- Only bare `<script>` and `<style>` tags (no attributes) get CSP-hashed. Tags with attributes (`type="module"`, `type="application/ld+json"`, etc.) are intentionally excluded — they're either external or non-executable. If you add a new inline `<script>`/`<style>` block, keep it attribute-free so `build-csp.ts` picks it up; otherwise the CSP will block it at runtime with no build-time warning.
+- Inline `style="..."` attributes are not covered by the CSP hashing — only `<style>` blocks are. Adding an inline style attribute anywhere will be silently blocked by `style-src` in production.
 
 ## Production Build
 

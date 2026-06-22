@@ -5,4 +5,4 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin
-  Content-Security-Policy: default-src 'none'; script-src 'self' '__INLINE_SCRIPT_HASH__'; style-src 'self' __INLINE_STYLE_HASHES__; font-src 'self'; img-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; require-trusted-types-for 'script'; trusted-types default
+  Content-Security-Policy: default-src 'none'; script-src 'self' __INLINE_SCRIPT_HASH__; style-src 'self' __INLINE_STYLE_HASHES__; font-src 'self'; img-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; require-trusted-types-for 'script'; trusted-types default
