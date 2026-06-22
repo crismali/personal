@@ -95,6 +95,8 @@ Deployed on [Cloudflare Pages](https://pages.cloudflare.com). Only the `producti
 ## Project Structure
 
 ```
+__tests__/             # Bun test files for the root build scripts
+build-csp.ts           # CSP hashing (inline script/style hashes injected into dist/_headers)
 build-images.ts        # Image processing (resize variants + OG image generation)
 build.ts               # Build script (orchestrator)
 dev.ts                 # Dev server
