@@ -1,10 +1,10 @@
 import { cpSync, rmSync, mkdirSync } from 'fs'
-import { createHash } from 'crypto'
 import path from 'path'
 import * as sass from 'sass'
 import { minify } from 'html-minifier-terser'
 import subsetFont from 'subset-font'
 import { processImages } from './build-images'
+import { injectCspHashes } from './build-csp'
 
 const SRC = path.resolve(import.meta.dir, 'src')
 const OUT = path.resolve(import.meta.dir, 'dist')
@@ -78,25 +78,8 @@ const htmlWithCssMap = minifiedHtml.replace(
   '/*# sourceMappingURL=/styles.css.map */</style>'
 )
 await Bun.write(`${OUT}/index.html`, htmlWithCssMap)
-
-const inlineScriptMatch = htmlWithCssMap.match(/<script>([^<]*)<\/script>/)
-if (!inlineScriptMatch) throw new Error('No inline <script> found to hash for CSP')
-const scriptHash = createHash('sha256').update(inlineScriptMatch[1]).digest('base64')
-
-const styleMatches = [...htmlWithCssMap.matchAll(/<style>([^<]*)<\/style>/g)]
-if (styleMatches.length === 0) throw new Error('No inline <style> found to hash for CSP')
-const styleHashes = styleMatches.map((match) =>
-  createHash('sha256').update(match[1]).digest('base64')
-)
-
-const headers = await Bun.file(`${OUT}/_headers`).text()
-await Bun.write(
-  `${OUT}/_headers`,
-  headers
-    .replace('__INLINE_SCRIPT_HASH__', `sha256-${scriptHash}`)
-    .replace('__INLINE_STYLE_HASHES__', styleHashes.map((hash) => `'sha256-${hash}'`).join(' '))
-)
-console.log('📄 HTML minified + CSS inlined  🔒 CSP script hash injected')
+await injectCspHashes(OUT, htmlWithCssMap)
+console.log('📄 HTML minified + CSS inlined  🔒 CSP hashes injected')
 
 // Phase 3: font subsetting needs the minified HTML + CSS (phase 2)
 const characters = [...new Set(htmlWithCssMap + css.css)].join('')
