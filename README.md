@@ -58,6 +58,7 @@ bun run typecheck
 ## Maintenance Notes
 
 - The `meta[name="description"]` and `og:description` tags in `src/index.html` hardcode the years of experience — update them manually each year.
+- The `<lastmod>` date in `src/sitemap.xml` should be updated manually whenever the content changes.
 
 ## Production Build
 
@@ -104,6 +105,7 @@ src/
   fonts/               # Source woff2 font files (subsetted at build time)
   images/              # Static images (avatar.webp, luna_napping source + resized variants)
   index.html           # HTML entry point
+  humans.txt           # humans.txt attribution file (copied to dist/ at build time)
   llms.txt             # Machine-readable profile for LLM/agent consumption (copied to dist/ at build time)
   robots.txt           # Crawl directives (copied to dist/ at build time)
   sitemap.xml          # XML sitemap for search engine indexing (copied to dist/ at build time)

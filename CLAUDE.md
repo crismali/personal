@@ -51,8 +51,9 @@ Single-page static site. Source lives in `src/`, scripts are at the project root
 - `src/styles/_personal.scss` — personal section styles (figures, images).
 - `src/styles/_content.scss` — shared typography, aside cards, and cross-section content styles.
 - `src/styles/_utilities.scss` — accessibility and utility classes (skip link, visually-hidden, focus-visible).
+- `src/humans.txt` — humans.txt attribution file; referenced via `<link rel="author">` in the HTML head; copied to `dist/` at build time.
 - `src/llms.txt` — machine-readable markdown profile for LLM/agent consumption; referenced via `<link rel="llms">` in the HTML head; copied to `dist/` at build time.
-- `src/sitemap.xml` — XML sitemap for search engine indexing; referenced in `robots.txt`; copied to `dist/` at build time.
+- `src/sitemap.xml` — XML sitemap for search engine indexing; referenced in `robots.txt`; copied to `dist/` at build time. Update `<lastmod>` manually whenever content changes.
 - `src/404.html` — Cloudflare Pages custom 404 page; redirects any unmatched path back to `/` via `<meta http-equiv="refresh">`; copied to `dist/` at build time.
 - No framework, no bundler config file — all build logic is inline in `dev.ts` and `build.ts`.
 
