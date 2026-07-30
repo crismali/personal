@@ -44,7 +44,20 @@ describe('setCurrentYear', () => {
 
 describe('setContactLink', () => {
   beforeEach(() => {
-    document.body.innerHTML = '<a id="contact-link">Email</a>'
+    document.body.innerHTML =
+      '<p id="contact-fallback">The email link requires JavaScript.</p>' +
+      '<ul><li hidden><a id="contact-link">Email</a></li></ul>'
+  })
+
+  it('reveals the link and drops the fallback once wired up', () => {
+    setContactLink()
+    expect(document.querySelector('li')?.hasAttribute('hidden')).toBe(false)
+    expect(document.getElementById('contact-fallback')).toBeNull()
+  })
+
+  it('leaves the link hidden and the fallback in place if it never runs', () => {
+    expect(document.querySelector('li')?.hasAttribute('hidden')).toBe(true)
+    expect(document.getElementById('contact-fallback')).not.toBeNull()
   })
 
   it('sets href to #contact initially', () => {

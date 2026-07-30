@@ -31,4 +31,10 @@ export function setContactLink() {
     },
     { once: true }
   )
+  // The link ships hidden and the fallback ships visible, so a script that never
+  // runs — JS disabled, but also a CSP block or network failure — leaves a usable
+  // message rather than a dead <a> with no href. Hiding the <li> rather than the
+  // <a> keeps the flex row's 2rem gap from leaving a phantom slot.
+  link.closest('li')?.removeAttribute('hidden')
+  document.getElementById('contact-fallback')?.remove()
 }

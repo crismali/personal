@@ -59,13 +59,6 @@
       const stored = localStorage.getItem('theme')
       if (stored) document.documentElement.setAttribute('data-theme', stored)
     </script>
-    <noscript>
-      <style>
-        #contact-link {
-          display: none;
-        }
-      </style>
-    </noscript>
     <link
       rel="preload"
       href="/fonts/dm-sans-normal.woff2"
@@ -189,10 +182,10 @@
       <section id="contact">
         <h2>Contact</h2>
         <p>Interested in working together? Feel free to reach out.</p>
-        <noscript><p>Enable JavaScript to view the email link.</p></noscript>
+        <p id="contact-fallback">The email link requires JavaScript.</p>
         <nav aria-label="Contact">
           <ul class="contact-list">
-            <li><a id="contact-link">Email</a></li>
+            <li hidden><a id="contact-link">Email</a></li>
             <li><a href="https://github.com/crismali">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/michael-crismali">LinkedIn</a></li>
           </ul>
