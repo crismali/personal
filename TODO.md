@@ -14,5 +14,5 @@
 ## Accessibility
 
 - [x] Darken `--color-accent` in light mode (now `#8a5219` — 5.95:1 on `--color-bg`, 5.41:1 on `--color-surface`, up from 4.52:1 / 4.11:1)
-- [ ] Drop the redundant `<figcaption>` on the avatar image in `src/index.html` (duplicates the `alt` text exactly, can cause double-announce in screen readers)
+- [x] Drop the redundant `<figcaption>` on the avatar image in `src/index.html` (duplicates the `alt` text exactly, can cause double-announce in screen readers)
 - [ ] Add a `<noscript>` fallback message near `#contact-link` for the case where JS is blocked/fails after load (e.g. CSP block, network error) rather than only no-JS
