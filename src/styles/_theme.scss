@@ -18,7 +18,9 @@
   --color-muted: #6b6560;
   --color-border: #ddd9d4;
   --color-surface: #f0ece7;
-  --color-accent: #a46220;
+  // Dark enough to clear AA against --color-surface (5.41:1), not just --color-bg;
+  // accent links appear inside aside cards, which use the surface color.
+  --color-accent: #8a5219;
   --avatar-filter: none;
   --figure-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
