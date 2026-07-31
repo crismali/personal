@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] Check Google Search Console security review status (requested 2026-06-21)
+- [x] Check Google Search Console security review status (requested 2026-06-21, cleared 2026-07-31 — no security issues reported)
 - [x] Add CSP + security headers via Cloudflare Pages `_headers` file
 
 ## Lighthouse Best Practices
