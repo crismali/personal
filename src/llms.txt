@@ -15,6 +15,7 @@ Full stack software engineer based in Chicago, currently freelancing through [Se
 
 - JavaScript / TypeScript
 - Ruby on Rails
+- Elixir
 - React / React Native
 - HTML & CSS
 - SQL (PostgreSQL)
@@ -22,6 +23,7 @@ Full stack software engineer based in Chicago, currently freelancing through [Se
 ### How I Work
 
 - Test-driven development
+- Conscientious use of AI — real leverage, reviewed like anything else I ship
 - Comfortable working with anyone, from customers to executives
 - Brings calm and steadiness to fast-moving teams
 
@@ -31,6 +33,15 @@ Full stack software engineer based in Chicago, currently freelancing through [Se
 - Speaker at RailsConf 2018
 - Author of [MagicLamp](https://github.com/crismali/magic_lamp) and [FantaskSpec](https://github.com/crismali/fantaskspec)
 - Contributor to [JsonbAccessor](https://github.com/madeintandem/jsonb_accessor)
+
+## Projects
+
+Things I've made on my own time.
+
+- [Oh FEC](https://ohfec.org) — campaign finance explorer over the public OpenFEC record: candidates, committees, filings, donors, and outside-spending vendors, cached and cross-linked.
+- [Nonprofiteer](https://nonprofiteer.us) — IRS Form 990 filings normalized and served as infrastructure (~2M organizations, ~10M officers/directors/key employees) over a JSON:API with keyset pagination.
+
+Also a cowriter (one of eight) on *Are They Gonna Kiss?*, a sketch revue at The Second City, running at Donny's Skybox in Chicago, August–September 2026.
 
 ## Personal
 
